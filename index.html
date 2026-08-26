@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bolton Pre-K, quickly</title>
+<meta name="description" content="Fast answers for Bolton Academy Pre-K parents. Drop-off times, pickup, who to email, key dates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dusk:#16304a;
+  --dusk-deep:#0e2033;
+  --parchment:#f6f1e4;
+  --marigold:#e8a319;
+  --sage:#7c9885;
+  --clay:#b4472e;
+  --ink:#1b2a38;
+  --muted:#5d7183;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--parchment);
+  color:var(--ink);
+  font-family:"Atkinson Hyperlegible",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.55;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px 80px}
+
+/* ---- masthead ---- */
+header{
+  background:var(--dusk);
+  color:var(--parchment);
+  padding:28px 0 0;
+  border-bottom:5px solid var(--marigold);
+}
+header .wrap{padding-bottom:0}
+.eyebrow{
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--marigold);margin:0 0 6px;font-weight:700;
+}
+h1{
+  font-family:"Fraunces",Georgia,serif;
+  font-variation-settings:"SOFT" 40,"WONK" 1;
+  font-size:clamp(34px,8vw,52px);
+  line-height:1.02;margin:0 0 4px;font-weight:700;letter-spacing:-.02em;
+}
+.sub{margin:0 0 20px;color:#b9cadb;font-size:15px}
+
+/* ---- the live panel: the signature ---- */
+.now{
+  background:var(--clay);
+  color:#fff;
+  margin:0 -20px;
+  padding:16px 20px 20px;
+  border-top:4px solid #8e3120;
+}
+.now-head{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  margin:0 0 8px;
+}
+.now-label{
+  font-size:12.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:#ffd9cf;margin:0;font-weight:700;
+}
+.live{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  background:rgba(0,0,0,.28);color:#ffe08a;
+  padding:3px 8px 3px 7px;border-radius:99px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:#ffe08a;display:block}
+.now-clock{
+  margin-left:auto;font-size:12.5px;font-weight:700;color:#ffd9cf;
+  font-variant-numeric:tabular-nums;letter-spacing:.04em;
+}
+.now-line{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:clamp(21px,5.2vw,28px);
+  line-height:1.22;margin:0;color:#fff;font-weight:700;
+}
+.now-line b{color:#ffe08a;font-weight:700}
+.now-sub{margin:7px 0 0;font-size:14.5px;color:#fbdcd4}
+.now-sub b{color:#fff}
+.now.urgent{background:#8e3120;border-top-color:#ffe08a}
+.now.urgent .now-label{color:#ffe08a}
+
+@media (prefers-reduced-motion:no-preference){
+  .dot{animation:blip 1.6s ease-in-out infinite}
+  .now.urgent .dot{animation-duration:.8s}
+  @keyframes blip{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.75)}}
+}
+
+/* ---- search ---- */
+.searchbar{position:sticky;top:0;z-index:10;background:var(--parchment);padding:18px 0 12px;margin:0 -20px;padding-left:20px;padding-right:20px}
+.searchbar.stuck{box-shadow:0 6px 18px -12px rgba(22,48,74,.5)}
+input[type=search]{
+  width:100%;padding:15px 16px;font-size:17px;
+  font-family:inherit;color:var(--ink);
+  background:#fff;
+  border:2px solid var(--dusk);
+  border-radius:2px;
+  -webkit-appearance:none;
+}
+input[type=search]:focus{outline:3px solid var(--marigold);outline-offset:1px}
+input[type=search]::placeholder{color:#94a6b4}
+
+.count{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+/* ---- cards ---- */
+.card{
+  background:#fff;
+  border-left:4px solid var(--sage);
+  padding:16px 18px;
+  margin:12px 0;
+}
+.card h2{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:19px;margin:0 0 6px;font-weight:600;line-height:1.25;
+}
+.card p{margin:0;color:#33475a}
+.card p+p{margin-top:8px}
+.card b{color:var(--dusk);font-weight:700}
+.card a{color:var(--clay)}
+.card[data-cat="deadline"]{border-left-color:var(--clay)}
+.card[data-cat="contact"]{border-left-color:var(--marigold)}
+.tag{
+  display:inline-block;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:700;margin:0 0 8px;
+}
+
+/* ---- section rules ---- */
+.rule{
+  display:flex;align-items:center;gap:14px;
+  margin:38px 0 4px;
+}
+.rule span{
+  font-family:"Fraunces",Georgia,serif;
+  font-size:14px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dusk);font-weight:700;white-space:nowrap;
+}
+.rule:after{content:"";flex:1;height:2px;background:var(--dusk);opacity:.16}
+
+.empty{padding:28px 0;color:var(--muted)}
+.empty b{color:var(--ink)}
+
+footer{
+  margin-top:44px;padding-top:20px;border-top:2px solid rgba(22,48,74,.15);
+  font-size:13.5px;color:var(--muted);
+}
+footer a{color:var(--clay)}
+.hidden{display:none !important}
+
+@media (prefers-reduced-motion:no-preference){
+  .card{animation:rise .22s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Bolton Academy &middot; Pre-K &middot; 2026-27</p>
+    <h1>Bolton Pre-K,<br>quickly.</h1>
+    <p class="sub">Type what you need. Made by a parent, not the school.</p>
+    <div class="now" id="now">
+      <div class="now-head">
+        <p class="now-label">Your child's next move</p>
+        <span class="live"><span class="dot"></span>Live</span>
+        <span class="now-clock" id="nowClock"></span>
+      </div>
+      <p class="now-line" id="nowLine">Checking the time...</p>
+      <p class="now-sub" id="nowSub"></p>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="searchbar" id="searchbar">
+    <label for="q" class="hidden">Search</label>
+    <input type="search" id="q" placeholder="drop off, sick, picture day, who do I email..." autocomplete="off">
+    <p class="count" id="count"></p>
+  </div>
+
+  <div id="results"></div>
+
+  <div class="empty hidden" id="empty">
+    <p><b>Nothing matched that.</b></p>
+    <p>Try a simpler word, like <i>pickup</i>, <i>sick</i>, or <i>birthday</i>. If it's not here, email Kelli DiCristina, the Parent Liaison, at <a href="mailto:kelli.dicristina@apsk12.org">kelli.dicristina@apsk12.org</a>.</p>
+  </div>
+
+  <footer>
+    <p>Compiled by a Bolton parent from the Parent Handbook, Curriculum Night, and Meet the Teacher materials. <b>This is not an official school document.</b> The Parent Handbook and the Weekly Hoot are the authority.</p>
+    <p><a href="https://docs.google.com/document/d/1C2vrgktHXYiEWueIMRbJVQ0ZQGsVnBP_aLLBZEHKFaQ">Parent Handbook</a> &middot; <a href="https://www.atlantapublicschools.us/about/calendar">APS calendar</a> &middot; <a href="https://schools.mealviewer.com/school/BoltonAcademyElementary">Lunch menus</a> &middot; <a href="https://apsk12.schoolcashonline.com">Pay for field trips</a></p>
+    <p>Last updated 26 August 2026.</p>
+  </footer>
+</div>
+
+<script>
+const DATA = [
+{s:"Getting there",cat:"time",t:"What time is drop-off?",k:"drop off dropoff arrival morning car line carpool late what time start",
+ h:"Arrival begins at <b>7:15</b>. The car line runs <b>7:15 to 7:45</b>, in the rear of the building by the cafeteria. School starts at <b>7:45</b> and doors close at <b>7:50</b>.<p>No phones in the car line.</p>"},
+
+{s:"Getting there",cat:"deadline",t:"I'm running late. What do I do?",k:"late tardy running behind missed car line slip after 745",
+ h:"Park and walk your child to the <b>front office</b> to sign in as tardy. Tardy slips are issued starting at <b>7:50</b>."},
+
+{s:"Getting there",cat:"time",t:"What time is pickup?",k:"pickup pick up dismissal afternoon walker carpool end of day 215",
+ h:"Dismissal runs <b>2:15 to 2:45</b>.<p><b>Walkers</b> are picked up at the music room door, on the playground side. <b>Carpool</b> is in the rear by the cafeteria. Show your dismissal number on the carpool tag.</p><p>After 3:15 the social worker is called, so don't be that late.</p>"},
+
+{s:"Getting there",cat:"deadline",t:"I need to pick up early, or change how my child goes home",
+ k:"early checkout check out change dismissal leave early appointment 130",
+ h:"Both have to be arranged by <b>1:30</b>, through ClassDojo with the teacher or through the front office.<p><b>No checkouts at all after 2:00.</b></p>"},
+
+{s:"Getting there",cat:"note",t:"Can I walk my child in?",k:"walk in inside building classroom door first day",
+ h:"Only on the first two days of school for Pre-K and Kindergarten. After that, drop-off happens at the car line or the main entrance."},
+
+{s:"Getting there",cat:"note",t:"Where do I park?",k:"parking park adams drive tow ticket",
+ h:"Legal marked spots on Adams Drive only. Don't block driveways or mailboxes, don't double park, don't leave the car unattended. Left turns into the driveway from Adams are not allowed unless an officer waves you in."},
+
+{s:"When something's wrong",cat:"deadline",t:"My child is sick. What do I do?",
+ k:"sick illness fever vomit throw up diarrhea stay home absent absence sick day rash",
+ h:"Keep them home for a fever of <b>100.4 or higher</b>, or vomiting or diarrhea in the past 24 hours. They can come back once they've been <b>fever free for 24 hours without medication</b>.<p>Email <b>Nechole Thompson</b> at <a href='mailto:nechole.thompson@apsk12.org'>nechole.thompson@apsk12.org</a>, or send a signed note within <b>3 days</b> of their return.</p>"},
+
+{s:"When something's wrong",cat:"contact",t:"Who do I tell about an absence or a doctor's appointment?",
+ k:"absence absent attendance doctor appointment excuse note who email",
+ h:"<b>Nechole Thompson</b>, attendance clerk.<p><a href='mailto:nechole.thompson@apsk12.org'>nechole.thompson@apsk12.org</a></p>"},
+
+{s:"When something's wrong",cat:"note",t:"How many absences is too many?",k:"absences truancy chronic absent too many miss school",
+ h:"Missing 10% or more of the year counts as chronically absent. APS sends a letter at <b>3</b> unexcused absences, plans intervention at <b>5</b>, may refer to the social worker at <b>8</b>, and may make a truancy referral at <b>10</b>."},
+
+{s:"When something's wrong",cat:"note",t:"My child needs medication at school",k:"medication medicine inhaler epipen clinic nurse",
+ h:"Everything goes through the <b>school clinic</b>. Children can't carry their own medication unless a medical practitioner has authorized it.<p>Nurse Coleman, <b>404-802-8372</b>.</p>"},
+
+{s:"Who to email",cat:"contact",t:"I don't know who to ask",k:"who do i email contact help question parent liaison portal background check unsure",
+ h:"<b>Kelli DiCristina</b>, Parent Liaison. She's the catch-all, and also handles Parent Portal help and background check requests.<p><a href='mailto:kelli.dicristina@apsk12.org'>kelli.dicristina@apsk12.org</a> &middot; 404-802-8368</p>"},
+
+{s:"Who to email",cat:"contact",t:"Something about my child's day or their classroom",k:"teacher classroom dojo message question about my child",
+ h:"Message your teacher on <b>ClassDojo</b>. Teachers have 24 hours to reply to non-emergencies."},
+
+{s:"Who to email",cat:"contact",t:"Forms, records, enrollment, withdrawal",k:"registrar forms records enrollment withdraw paperwork dental immunization",
+ h:"<b>Maria Gabriel</b>, registrar.<p><a href='mailto:megabriel@apsk12.org'>megabriel@apsk12.org</a> &middot; 404-802-8350</p>"},
+
+{s:"Who to email",cat:"contact",t:"A concern the teacher couldn't solve",k:"assistant principal ap complaint concern escalate hutson",
+ h:"<b>Dwight Hutson</b> is the Assistant Principal for Pre-K through 2nd grade.<p><a href='mailto:dehutson@apsk12.org'>dehutson@apsk12.org</a></p><p>Principal <b>Heather Stephenson</b>: <a href='mailto:hstephenson@apsk12.org'>hstephenson@apsk12.org</a></p>"},
+
+{s:"Who to email",cat:"contact",t:"Support services",k:"iep 504 mtss eip special education gifted counselor social worker esol",
+ h:"<b>Special education</b>: Dr. Evette Givens, <a href='mailto:egivens@apsk12.org'>egivens@apsk12.org</a><p><b>MTSS, 504, EIP</b>: Demeshia Ware, <a href='mailto:demeshia.ware@apsk12.org'>demeshia.ware@apsk12.org</a></p><p><b>Gifted</b>: Nicole Hinton, <a href='mailto:nicole.hinton@apsk12.org'>nicole.hinton@apsk12.org</a></p><p><b>Counselor</b>: Daryl Steward, <a href='mailto:dsteward@apsk12.org'>dsteward@apsk12.org</a></p><p><b>Social worker</b>: Lamont Mitchell, <a href='mailto:lamitchell@apsk12.org'>lamitchell@apsk12.org</a></p>"},
+
+{s:"Who to email",cat:"contact",t:"PTA, volunteering, enrichment clubs",k:"pta volunteer clubs enrichment copresident",
+ h:"<b>PTA</b>: Whitney Bates Gomez and Cindy Wnek, <a href='mailto:copresident@boltonacademy.org'>copresident@boltonacademy.org</a><p><b>Enrichment clubs</b>: Candace Henderson, <a href='mailto:candace.mcfarland@atlanta.k12.ga.us'>candace.mcfarland@atlanta.k12.ga.us</a></p>"},
+
+{s:"The day",cat:"time",t:"What does the Pre-K day look like?",k:"schedule daily day routine centers nap quiet time lunch recess",
+ h:"<b>7:15</b> arrival and breakfast &middot; <b>8:00</b> opening circle &middot; <b>8:15</b> child-initiated centers, a full uninterrupted hour &middot; <b>9:25</b> literacy block &middot; <b>10:05</b> lunch &middot; <b>10:40</b> read aloud and small groups &middot; <b>11:15</b> math &middot; <b>12:10</b> quiet time &middot; <b>1:05</b> snack &middot; <b>1:20</b> individualized time &middot; <b>1:50</b> outdoor recess &middot; <b>2:15</b> dismissal"},
+
+{s:"The day",cat:"time",t:"Breakfast and lunch",k:"breakfast lunch food menu eat cafeteria",
+ h:"Breakfast is <b>7:15 to 7:40</b> sit-down, <b>7:40 to 8:15</b> grab and go. Pre-K lunch is around <b>10:05</b>.<p>Menus: <a href='https://schools.mealviewer.com/school/BoltonAcademyElementary'>mealviewer</a></p>"},
+
+{s:"The day",cat:"time",t:"After school (PSC) schedule",k:"psc aftercare after school afterschool pickup 6 late fee billing",
+ h:"<b>2:20</b> snacks &middot; <b>3:00</b> gym &middot; <b>3:30</b> outside &middot; <b>4:00</b> read along &middot; <b>5:00</b> game room &middot; <b>5:30</b> group discussion and dismissal.<p>Pickup by <b>6:00 sharp</b>. Late fee is <b>$1 a minute</b>.</p><p>Billing is weekly. Two or more days in a week bills as a full week. PSC is closed on APS breaks, holidays, and early release days.</p>"},
+
+{s:"Dates",cat:"deadline",t:"Sept 21 is an early release day",k:"early release september 21 half day 1115 no aftercare",
+ h:"Dismissal is <b>11:15 AM</b>, and there is <b>no aftercare</b> that day. Plan your childcare now."},
+
+{s:"Dates",cat:"deadline",t:"Field trips this fall",k:"field trip puppetry arts fernbank pay payment permission september 25 28",
+ h:"<b>Sept 25</b> &mdash; Center for Puppetry Arts, 10:45 AM. <b>Payment required.</b><p><b>Sept 28</b> &mdash; Fernbank. Covered by APS, nothing to pay.</p><p>Pay at <a href='https://apsk12.schoolcashonline.com'>School Cash Online</a>.</p>"},
+
+{s:"Dates",cat:"time",t:"Picture day",k:"picture day photo yearbook september 24 fall pictures",
+ h:"<b>Sept 24</b>, fall and yearbook photos."},
+
+{s:"Dates",cat:"time",t:"Key dates this fall",k:"calendar dates events pta sofi parliament nest colors labor day fall festival",
+ h:"<b>Sept 1</b> enrollment paperwork due &middot; <b>Sept 7</b> Labor Day, no school &middot; <b>Sept 8</b> PTA 6pm &middot; <b>Sept 11</b> Nest Parliament, wear Nest colors &middot; <b>Sept 21</b> early release &middot; <b>Sept 21-25</b> Hispanic Heritage Week &middot; <b>Sept 24</b> picture day &middot; <b>Oct 2</b> SOFi Cup &middot; <b>Oct 7</b> Yoga on the Lawn &middot; <b>Nov 7</b> Fall Festival &middot; <b>Nov 11</b> Mahjong Night<p>Holidays and breaks live on the <a href='https://www.atlantapublicschools.us/about/calendar'>APS calendar</a>.</p>"},
+
+{s:"Rules people get wrong",cat:"note",t:"Birthday treats",k:"birthday treat cupcake cake party invitation balloon celebrate",
+ h:"<b>Store bought only.</b> Bring them to the <b>front office</b>, not the classroom. No balloons or large party items.<p>Invitations can only be handed out at school if you're inviting the whole class, all the boys, or all the girls.</p>"},
+
+{s:"Rules people get wrong",cat:"deadline",t:"I want to volunteer or chaperone",k:"volunteer chaperone field trip background check register help",
+ h:"You need the <b>annual APS volunteer registration</b>, which includes a background check that has to <b>clear before</b> you can volunteer. It takes time, so start early.<p>Only cleared parents can go on field trips. Kelli DiCristina handles requests.</p>"},
+
+{s:"Rules people get wrong",cat:"note",t:"Visiting the school or the classroom",k:"visit visitor observe observation classroom badge sign in",
+ h:"Enter through the main office, show ID, sign in, wear a badge. <b>No classroom visits without an appointment.</b><p>To observe instruction, request it from administration <b>24 hours ahead</b> with a reason. Observations are capped at 30 minutes, no recording.</p>"},
+
+{s:"Rules people get wrong",cat:"note",t:"Testing: does Pre-K take MAP or AMIRA?",k:"testing test map amira assessment prek pre-k",
+ h:"<b>No.</b> Pre-K doesn't take MAP or AMIRA.<p>If you have an older child: MAP ran Aug 18-24 with makeups through Aug 28. AMIRA ran Aug 24-27 by grade, makeups Aug 31 to Sept 4.</p>"},
+
+{s:"Knowing what's going on",cat:"note",t:"Where does school information actually come from?",k:"communication hoot dojo infinite campus newsletter facebook email",
+ h:"<b>The Hoot</b> has the information. It's emailed Thursdays.<p><b>ClassDojo</b> reminds you about the information.</p><p><b>Infinite Campus</b> is for emergencies, plus attendance and annual updates.</p><p>Friday folders come home in backpacks. Conferences are in <b>October and February</b>.</p><p>The Facebook and PTA pages are not run by the school.</p>"},
+
+{s:"Knowing what's going on",cat:"note",t:"What are Nests and Parliaments?",k:"nest perch parliament colors owl black nest ib dual language",
+ h:"<b>The Perch</b> is the whole school community. Inside it are four <b>Nests</b> that mix all grades, Pre-K through 5th. Your child keeps the same Nest for their whole time at Bolton.<p><b>Parliaments</b> are monthly all-school meetings. Wear your Nest colors.</p><p>Bolton is an IB Primary Years school and also runs a 50/50 Spanish Dual Language Immersion program.</p>"}
+];
+
+/* ---------- render ---------- */
+const results=document.getElementById('results');
+const emptyEl=document.getElementById('empty');
+const countEl=document.getElementById('count');
+const q=document.getElementById('q');
+
+function render(filter){
+  const f=(filter||'').trim().toLowerCase();
+  const terms=f?f.split(/\s+/):[];
+  let shown=0,lastSection='';
+  results.innerHTML='';
+  for(const d of DATA){
+    const hay=(d.t+' '+d.k+' '+d.s).toLowerCase();
+    if(terms.length && !terms.every(t=>hay.includes(t))) continue;
+    if(d.s!==lastSection && !f){
+      const r=document.createElement('div');
+      r.className='rule';
+      r.innerHTML='<span>'+d.s+'</span>';
+      results.appendChild(r);
+      lastSection=d.s;
+    }
+    const c=document.createElement('article');
+    c.className='card';
+    c.setAttribute('data-cat',d.cat);
+    c.innerHTML=(f?'<p class="tag">'+d.s+'</p>':'')+'<h2>'+d.t+'</h2><p>'+d.h+'</p>';
+    results.appendChild(c);
+    shown++;
+  }
+  emptyEl.classList.toggle('hidden',shown>0);
+  countEl.textContent = f ? (shown===1?'1 answer':shown+' answers') : '';
+}
+
+q.addEventListener('input',()=>render(q.value));
+render('');
+
+/* ---------- the clock ---------- */
+const M=(h,m)=>h*60+m;
+function status(){
+  const n=new Date();
+  const day=n.getDay(), t=n.getHours()*60+n.getMinutes();
+  const fmt=x=>{const h=Math.floor(x/60),m=x%60;const ap=h>=12?'PM':'AM';const hh=((h+11)%12)+1;return hh+':'+String(m).padStart(2,'0')+' '+ap;};
+  const left=x=>{const d=x-t;return d===1?'1 minute':d+' minutes';};
+
+  if(day===0||day===6) return{u:false,l:"No school today.",s:"It's the weekend."};
+
+  if(t<M(7,15)) return{u:false,l:"School hasn't opened yet.",s:"Arrival begins at 7:15 AM. Don't drop off before then."};
+  if(t<M(7,45)) return{u:true,l:"Car line closes in <b>"+left(M(7,45))+"</b>.",s:"Rear of the building, by the cafeteria. Doors close at 7:50."};
+  if(t<M(7,50)) return{u:true,l:"Car line is closed.",s:"Park and walk in to the front office. Tardy slips start at 7:50."};
+  if(t<M(10,5)) return{u:false,l:"Morning centers and literacy.",s:"Lunch is at 10:05. Early checkout has to be arranged by 1:30."};
+  if(t<M(12,10)) return{u:false,l:"Lunch, then read aloud and small groups.",s:"Early checkout has to be arranged by 1:30."};
+  if(t<M(13,30)) return{u:t>=M(13,0),l:"Quiet time, then snack.",s:"Checkout and dismissal changes must be in by <b>1:30</b>. That's "+left(M(13,30))+" away."};
+  if(t<M(14,0)) return{u:true,l:"Too late to change dismissal.",s:"Checkouts stop entirely at 2:00. Dismissal begins at 2:15."};
+  if(t<M(14,15)) return{u:true,l:"No more checkouts.",s:"Dismissal begins at 2:15. Walkers at the music room door."};
+  if(t<M(14,45)) return{u:false,l:"Dismissal is happening now.",s:"Walkers at the music room door, carpool in the rear. Ends at 2:45."};
+  if(t<M(15,15)) return{u:false,l:"Dismissal has ended.",s:"Pick up at the front office. The social worker is called after 3:15."};
+  if(t<M(18,0)) return{u:t>=M(17,30),l:"Aftercare is running.",s:"Pickup by <b>6:00 sharp</b>. It's "+fmt(t)+" now. Late fee is $1 a minute."};
+  return{u:false,l:"The school day is over.",s:"Arrival begins at 7:15 tomorrow morning."};
+}
+function tick(){
+  const s=status();
+  const n=new Date();
+  const hh=((n.getHours()+11)%12)+1;
+  document.getElementById('nowClock').textContent=
+    hh+':'+String(n.getMinutes()).padStart(2,'0')+':'+String(n.getSeconds()).padStart(2,'0')+' '+(n.getHours()>=12?'PM':'AM');
+  document.getElementById('nowLine').innerHTML=s.l;
+  document.getElementById('nowSub').innerHTML=s.s;
+  document.getElementById('now').classList.toggle('urgent',s.u);
+}
+tick(); setInterval(tick,1000);
+
+/* sticky search shadow */
+const sb=document.getElementById('searchbar');
+addEventListener('scroll',()=>{sb.classList.toggle('stuck',sb.getBoundingClientRect().top<=0);},{passive:true});
+</script>
+</body>
+</html>
